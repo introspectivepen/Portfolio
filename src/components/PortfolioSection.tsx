@@ -181,7 +181,7 @@ const PortfolioSection: React.FC = () => {
       description: "Multilingual web application for farmers with modules for soil testing, pest detection, crop management, and government schemes.",
       tech: ["HTML", "CSS", "JavaScript", "Python", "Flask", "SQL"],
       color: "bg-portfolio-teal",
-      link: "https://agribot-demo.com",
+      link: "https://agribot-btpr.onrender.com",
       repo: "https://github.com/Sreejith2003/AgriBot/tree/saminathan",
       pdfPath: "/pdfs/AgriBot.pdf",
       slides: [

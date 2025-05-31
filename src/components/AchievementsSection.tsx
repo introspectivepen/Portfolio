@@ -37,6 +37,13 @@ const AchievementsSection = () => {
       color: "bg-portfolio-teal",
       icon: <Star className="h-5 w-5" />
     },
+     {
+      title: "Winner",
+      event: "NIRAL Thiruvizha: TN Govt",
+      description: "Winner – Top 50 Team in the Uzhavan Project, selected from 28,000+ students at the NIRAL Thiruvizha Hackathon by the Government of Tamil Nadu",
+      color: "bg-portfolio-blue",
+      icon: <Star className="h-5 w-5" />
+    },
     {
       title: "3rd Place",
       event: "Arduino Botics by IIT Varanasi",
@@ -51,13 +58,7 @@ const AchievementsSection = () => {
       color: "bg-portfolio-purple",
       icon: <Star className="h-5 w-5" />
     },
-    {
-      title: "Advanced",
-      event: "NIRAL Thiruvizha: TN Govt",
-      description: "Advanced to top 1000 teams from 28,000+ students with AgriBot",
-      color: "bg-portfolio-blue",
-      icon: <Star className="h-5 w-5" />
-    }
+  
   ];
 
   return (
