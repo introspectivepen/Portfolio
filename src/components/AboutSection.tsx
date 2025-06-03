@@ -28,7 +28,7 @@ const AboutSection: React.FC = () => {
             const items = entry.target.querySelectorAll('.timeline-item');
             items.forEach((item, index) => {
               setTimeout(() => {
-                item.classNameList.add('opacity-100', 'translate-y-0');
+                item.classList.add('opacity-100', 'translate-y-0');
                 item.classList.remove('opacity-0', 'translate-y-10');
               }, index * 200);
             });
@@ -121,7 +121,7 @@ const AboutSection: React.FC = () => {
                     </div>
                   </div>
                   {/* Timeline Content */}
-                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 md:pr-12 text-right' : 'pl-8 md:pl-12'}`}>
+                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 md:pr-12' : 'pl-8 md:pl-12'}`}>
                     <div className={`flex flex-col ${index % 2 === 0 ? 'items-end' : 'items-start'}`}>
                       <div className="mb-2 flex items-center gap-2">
                         {job.icon}
@@ -132,9 +132,9 @@ const AboutSection: React.FC = () => {
                       </p>
                       <p className="mb-2 text-white/90 font-medium">{job.position}</p>
                       <ul
-                        className={`text-white/70 text-sm md:text-base ${
-                          index % 2 === 0 ? 'text-right' : 'text-left'
-                        } list-disc list-inside`}
+                        className={`text-white/70 text-sm md:text-base custom-bullets ${
+                          index % 2 === 0 ? 'custom-bullets-right' : 'custom-bullets-left'
+                        }`}
                       >
                         {job.description.map((item, i) => (
                           <li key={i} className="mb-2">{item}</li>
@@ -168,7 +168,7 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Decorative Elements (Matching HeroSection) */}
+        {/* Decorative Elements */}
         <div
           className="absolute top-1/3 right-10 w-6 h-6 rounded-full blur-md"
           style={{ backgroundColor: `${portfolioPink}30` }}
@@ -243,6 +243,37 @@ const AboutSection: React.FC = () => {
         }
         .delay-200 {
           animation-delay: 0.2s;
+        }
+        .custom-bullets {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .custom-bullets li {
+          position: relative;
+          padding-left: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+        .custom-bullets-left li::before {
+          content: '•';
+          position: absolute;
+          left: 0;
+          color: ${portfolioTeal};
+          font-size: 1.2rem;
+          line-height: 1.5rem;
+        }
+        .custom-bullets-right li {
+          padding-right: 1.5rem;
+          padding-left: 0;
+          text-align: right;
+        }
+        .custom-bullets-right li::before {
+          content: '•';
+          position: absolute;
+          right: 0;
+          color: ${portfolioTeal};
+          font-size: 1.2rem;
+          line-height: 1.5rem;
         }
       `}</style>
     </>
