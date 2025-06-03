@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Network, Shield, Globe } from 'lucide-react';
 
-const portfolioTeal = '#14b8a6'; // Your teal color
+const portfolioTeal = '#4ECCA3'; // Updated to match HeroSection
+const portfolioPink = '#FF6B6B'; // Matches HeroSection
+const portfolioBlue = '#9C51B6'; // Matches HeroSection
 
 interface WorkExperience {
   position: string;
@@ -9,24 +11,24 @@ interface WorkExperience {
   period: string;
   description: string[];
   icon: JSX.Element;
-  isActive: boolean;
 }
 
 const AboutSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isResumeOpen, setIsResumeOpen] = useState<boolean>(false);
 
+  // Intersection Observer for section visibility and timeline animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
             entry.target.classList.remove('opacity-0', 'translate-y-10');
             const items = entry.target.querySelectorAll('.timeline-item');
             items.forEach((item, index) => {
               setTimeout(() => {
-                item.classList.add('opacity-100', 'translate-y-0');
+                item.classNameList.add('opacity-100', 'translate-y-0');
                 item.classList.remove('opacity-0', 'translate-y-10');
               }, index * 200);
             });
@@ -36,14 +38,9 @@ const AboutSection: React.FC = () => {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
 
@@ -57,8 +54,7 @@ const AboutSection: React.FC = () => {
         'Configured and troubleshot routers/switches with RIP, OSPF, NAT, and DHCP',
         'Tested network topologies using CLI tools and applied OSI/TCP-IP models',
       ],
-      icon: <Network className="w-6 h-6 text-portfolio-teal" />,
-      isActive: false,
+      icon: <Network className="w-6 h-6" style={{ color: portfolioTeal }} />,
     },
     {
       position: 'Intern',
@@ -69,8 +65,7 @@ const AboutSection: React.FC = () => {
         'Developed a real-time digital fraud detection system',
         'Used Python, Flask, HTML, CSS, and JavaScript for secure workflows',
       ],
-      icon: <Shield className="w-6 h-6 text-portfolio-teal" />,
-      isActive: false,
+      icon: <Shield className="w-6 h-6" style={{ color: portfolioTeal }} />,
     },
     {
       position: 'Intern',
@@ -81,8 +76,7 @@ const AboutSection: React.FC = () => {
         'Designed responsive UI for enhanced cross-platform accessibility',
         'Built full-stack features using HTML, CSS, JavaScript, Node.js, and MongoDB',
       ],
-      icon: <Globe className="w-6 h-6 text-portfolio-teal" />,
-      isActive: false,
+      icon: <Globe className="w-6 h-6" style={{ color: portfolioTeal }} />,
     },
   ];
 
@@ -96,42 +90,46 @@ const AboutSection: React.FC = () => {
         }`}
       >
         <div className="container mx-auto px-6">
-          {/* Removed the "I AM A ..." animated roles headline */}
-
+          {/* About Me Section */}
           <div className="mb-20">
-            <h3 className="mb-6 text-2xl font-semibold">About Me</h3>
+            <h3 className="mb-6 text-2xl font-semibold text-white">About Me</h3>
             <div className="text-white/70 space-y-4 text-lg leading-relaxed">
-              <p>
-                A results-driven Software Engineer passionate about building scalable, user-centric
-                solutions.
-              </p>
-              <p>
-                Graduated in Electronics and Communication Engineering from AGNI College of
-                Technology (2021–2025).
-              </p>
+              <p>A results-driven Software Engineer passionate about building scalable, user-centric solutions.</p>
+              <p>Graduated in Electronics and Communication Engineering from AGNI College of Technology (2021–2025).</p>
               <p>Known for delivering innovative, real-world solutions with creativity and precision.</p>
             </div>
           </div>
 
+          {/* Work Experience Timeline */}
           <div className="mb-20">
-            <h3 className="mb-10 text-2xl font-semibold">Work Experience</h3>
+            <h3 className="mb-10 text-2xl font-semibold text-white">Work Experience</h3>
             <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-portfolio-teal to-transparent"></div>
+              {/* Timeline Bar */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-[#4ECCA3] to-transparent" />
               {workExperience.map((job, index) => (
                 <div
                   key={index}
-                  className={`timeline-item flex items-center mb-12 opacity-0 translate-y-10 transition-all duration-500 ease-out ${
+                  className={`timeline-item relative flex items-center mb-12 opacity-0 translate-y-10 transition-all duration-500 ease-out ${
                     index % 2 === 0 ? 'flex-row-reverse' : ''
-                  } hover:bg-portfolio-black/20 hover:rounded-lg hover:shadow-lg hover:scale-105 transition-transform duration-300`}
+                  } hover:bg-white/5 hover:rounded-lg hover:scale-105 transition-transform duration-300`}
                 >
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full bg-portfolio-teal animate-pulse shadow-[0_0_10px_rgba(0,255,255,0.5)]"></div>
+                  {/* Timeline Dot with Ripple Effect */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2">
+                    <div className="relative w-5 h-5 rounded-full" style={{ backgroundColor: portfolioTeal }}>
+                      <div className="absolute inset-0 rounded-full bg-[#4ECCA3]/30 animate-ripple" />
+                      <div className="absolute inset-0 rounded-full bg-[#4ECCA3]/20 animate-ripple delay-200" />
+                    </div>
+                  </div>
+                  {/* Timeline Content */}
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 md:pr-12 text-right' : 'pl-8 md:pl-12'}`}>
                     <div className={`flex flex-col ${index % 2 === 0 ? 'items-end' : 'items-start'}`}>
                       <div className="mb-2 flex items-center gap-2">
                         {job.icon}
-                        <h4 className="text-xl md:text-2xl font-bold">{job.company}</h4>
+                        <h4 className="text-xl md:text-2xl font-bold text-white">{job.company}</h4>
                       </div>
-                      <p className="text-portfolio-teal mb-1 text-sm md:text-base">{job.period}</p>
+                      <p className="mb-1 text-sm md:text-base" style={{ color: portfolioTeal }}>
+                        {job.period}
+                      </p>
                       <p className="mb-2 text-white/90 font-medium">{job.position}</p>
                       <ul
                         className={`text-white/70 text-sm md:text-base ${
@@ -139,22 +137,30 @@ const AboutSection: React.FC = () => {
                         } list-disc list-inside`}
                       >
                         {job.description.map((item, i) => (
-                          <li key={i} className="mb-2">
-                            {item}
-                          </li>
+                          <li key={i} className="mb-2">{item}</li>
                         ))}
                       </ul>
                     </div>
                   </div>
-                  <div className="w-1/2"></div>
+                  <div className="w-1/2" />
                 </div>
               ))}
             </div>
 
+            {/* Resume Button */}
             <div className="flex justify-center mt-10">
               <button
                 onClick={() => setIsResumeOpen(true)}
-                className="px-8 py-3 bg-portfolio-black border-2 border-portfolio-teal text-portfolio-teal rounded-full hover:bg-portfolio-teal hover:text-portfolio-black transition-colors duration-300 text-lg font-medium"
+                className="px-8 py-3 bg-transparent border-2 rounded-full text-lg font-medium transition-colors duration-300"
+                style={{ borderColor: portfolioTeal, color: portfolioTeal }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = portfolioTeal;
+                  e.currentTarget.style.color = '#000';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = portfolioTeal;
+                }}
               >
                 See Resume
               </button>
@@ -162,13 +168,21 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="absolute top-1/3 right-10 w-6 h-6 rounded-full bg-portfolio-pink/30 blur-md"></div>
-        <div className="absolute bottom-1/4 left-20 w-8 h-8 rounded-full bg-portfolio-blue/20 blur-md"></div>
+        {/* Decorative Elements (Matching HeroSection) */}
+        <div
+          className="absolute top-1/3 right-10 w-6 h-6 rounded-full blur-md"
+          style={{ backgroundColor: `${portfolioPink}30` }}
+        />
+        <div
+          className="absolute bottom-1/4 left-20 w-8 h-8 rounded-full blur-md"
+          style={{ backgroundColor: `${portfolioBlue}20` }}
+        />
       </section>
 
+      {/* Resume Modal */}
       {isResumeOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/80 backdrop-blur-sm">
-          <div className="relative bg-white rounded-lg shadow-lg max-w-3xl w-full h-[80vh] overflow-y-auto p-8">
+          <div className="relative bg-white rounded-lg max-w-3xl w-full h-[80vh] overflow-y-auto p-8">
             <button
               onClick={() => setIsResumeOpen(false)}
               className="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
@@ -181,12 +195,16 @@ const AboutSection: React.FC = () => {
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
-
             <div className="text-black">
-             <h2 className="text-3xl font-bold mb-6 text-center">Saminathan's Resume</h2>
+              <h2 className="text-3xl font-bold mb-6 text-center">Saminathan's Resume</h2>
               <iframe
                 src="/Saminathan_M.pdf#toolbar=0"
                 className="w-full h-[60vh]"
@@ -196,7 +214,10 @@ const AboutSection: React.FC = () => {
                 <a
                   href="/Saminathan_M.pdf"
                   download="Saminathan_Resume.pdf"
-                  className="px-8 py-3 bg-portfolio-teal text-portfolio-black rounded-full hover:bg-portfolio-teal/80 transition-colors duration-300 text-lg font-medium"
+                  className="px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300"
+                  style={{ backgroundColor: portfolioTeal, color: '#000' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `${portfolioTeal}cc`)}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = portfolioTeal)}
                 >
                   Download Resume
                 </a>
@@ -205,6 +226,25 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
       )}
+
+      <style>{`
+        @keyframes ripple {
+          0% {
+            transform: scale(1);
+            opacity: 0.5;
+          }
+          100% {
+            transform: scale(2.5);
+            opacity: 0;
+          }
+        }
+        .animate-ripple {
+          animation: ripple 1.5s ease-out infinite;
+        }
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+      `}</style>
     </>
   );
 };
