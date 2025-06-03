@@ -186,9 +186,21 @@ const AboutSection: React.FC = () => {
             </button>
 
             <div className="text-black">
-              <h2 className="text-3xl font-bold mb-6">Resume</h2>
-              {/* Insert your resume content here or embed PDF */}
-              <p>Your resume content goes here...</p>
+             <h2 className="text-3xl font-bold mb-6 text-center">Saminathan's Resume</h2>
+              <iframe
+                src="/Saminathan_M.pdf#toolbar=0"
+                className="w-full h-[60vh]"
+                title="Saminathan's Resume"
+              />
+              <div className="flex justify-center mt-6">
+                <a
+                  href="/Saminathan_M.pdf"
+                  download="Saminathan_Resume.pdf"
+                  className="px-8 py-3 bg-portfolio-teal text-portfolio-black rounded-full hover:bg-portfolio-teal/80 transition-colors duration-300 text-lg font-medium"
+                >
+                  Download Resume
+                </a>
+              </div>
             </div>
           </div>
         </div>
