@@ -30,16 +30,16 @@ const SkillsSection = () => {
   }, []);
 
   const skills = [
-    { name: "Java", icon: Code, category: "Languages", percentage: 90 },
+     { name: "Java", icon: Code, category: "Languages", percentage: 90 },
     { name: "Python", icon: Code, category: "Languages", percentage: 70 },
     { name: "C", icon: Code, category: "Languages", percentage: 70 },
     { name: "HTML", icon: FileCode, category: "Web Development", percentage: 95 },
     { name: "CSS", icon: FileCode, category: "Web Development", percentage: 85 },
     { name: "JavaScript", icon: FileJson, category: "Web Development", percentage: 80 },
-    { name: "Node.js", icon: Server, category: "Web Development", percentage: 75 },
+    { name: "SpringBoot", icon: Server, category: "Web Development", percentage: 75 },
+    { name: "Flask", icon: Server, category: "Web Development", percentage: 60 },
     { name: "MongoDB", icon: Database, category: "Databases", percentage: 80 },
     { name: "SQL", icon: Database, category: "Databases", percentage: 80 },
-    { name: "Git", icon: FolderGit, category: "Tools", percentage: 75 },
     { name: "GitHub", icon: Github, category: "Tools", percentage: 80 },
   ];
 
