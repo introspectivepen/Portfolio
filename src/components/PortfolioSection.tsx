@@ -266,6 +266,108 @@ const PortfolioSection: React.FC = () => {
       ],
     },
     {
+      title: "Audio to Text Transcriber",
+      description: "A full-stack web application that transcribes audio files to text using a Spring Boot backend and a React frontend, powered by OpenAI's Whisper API.",
+      tech: ["Java", "Spring Boot", "Spring AI", "React", "Vite", "OpenAI Whisper API"],
+      color: "bg-portfolio-pink",
+      link: "",
+      repo: "https://github.com/introspectivepen/Audio-transcriber-java-springboot-springApi",
+      pdfPath: "/pdfs/audio-transcriber.pdf",
+      slides: [
+        {
+          title: "Introduction",
+          images: [],
+          content: (
+            <>
+              <p className="text-lg text-white/90">A full-stack web app that transcribes audio files to text using OpenAI's Whisper API.</p>
+              <p className="text-white/70 mt-2">It features a secure Spring Boot backend for processing and a clean, reactive React frontend for a smooth user experience.</p>
+            </>
+          ),
+        },
+        {
+          title: "Key Features",
+          images: [],
+          content: (
+            <>
+              <ul className="list-disc list-inside text-white/70 space-y-2">
+                <li><b>Simple File Upload:</b> A clean interface to select and upload audio files (e.g., MP3, WAV, M4A).</li>
+                <li><b>Fast Transcription:</b> Leverages the power of OpenAI's Whisper model for accurate and quick transcription.</li>
+                <li><b>RESTful Backend:</b> Built with Java and Spring Boot to handle file processing and API communication securely.</li>
+                <li><b>Reactive Frontend:</b> A smooth and responsive user experience built with React and Vite.</li>
+                <li><b>Decoupled Architecture:</b> The frontend and backend are separate, allowing for independent development and scaling.</li>
+              </ul>
+            </>
+          ),
+        },
+        {
+          title: "Technology Stack",
+          images: [],
+          content: (
+            <>
+              <p className="text-white/70 mb-2">The project uses a modern, robust tech stack for both server-side and client-side development.</p>
+              <ul className="list-disc list-inside text-white/70 space-y-2">
+                <li><b>Backend:</b> Java 17, Spring Boot 3, Spring AI, Maven.</li>
+                <li><b>Frontend:</b> React, Vite, CSS3.</li>
+                <li><b>API Service:</b> OpenAI Whisper API.</li>
+              </ul>
+            </>
+          ),
+        },
+        {
+          title: "Implementation Details",
+          images: [],
+          content: (
+            <>
+              <p className="text-white/70 mb-2">The application follows a decoupled architecture with the following pipeline:</p>
+              <ul className="list-disc list-inside text-white/70">
+                <li><b>Frontend:</b> Users upload audio files via a React interface built with Vite for fast development and hot module replacement.</li>
+                <li><b>Backend:</b> Spring Boot handles file uploads, processes requests, and communicates with the OpenAI Whisper API using Spring AI.</li>
+                <li><b>API Integration:</b> Securely manages API keys and handles transcription requests with error handling for file formats and network issues.</li>
+                <li><b>Output:</b> Transcribed text is returned to the frontend and displayed in a user-friendly format.</li>
+              </ul>
+            </>
+          ),
+        },
+        {
+          title: "System Outputs",
+          images: [
+            "/images/audioui.png",
+            
+          ],
+          content: (
+            <>
+              <p className="text-white/70">Upload audio files and view transcribed text in a clean, responsive interface.</p>
+            </>
+          ),
+        },
+        {
+          title: "Challenges",
+          images: [],
+          content: (
+            <>
+              <p className="text-white/70 mb-2">Key challenges faced during development:</p>
+              <ul className="list-disc list-inside text-white/70">
+                <li><b>File Size and Processing:</b> Handling large audio files efficiently without overloading the server.</li>
+                <li><b>API Rate Limits:</b> Managing OpenAI API rate limits and costs for transcription requests.</li>
+                <li><b>Cross-Browser Compatibility:</b> Ensuring consistent file upload and display across browsers.</li>
+                <li><b>Error Handling:</b> Robust handling of invalid file formats and network failures.</li>
+              </ul>
+              <p className="text-white/70 mt-2">Solutions included chunked file uploads, caching API responses, and extensive testing across browsers.</p>
+            </>
+          ),
+        },
+        {
+          title: "Conclusion",
+          images: [],
+          content: (
+            <>
+              <p className="text-white/70">The Audio to Text Transcriber provides a reliable and user-friendly solution for transcribing audio files, leveraging modern web technologies and AI. Future enhancements could include real-time transcription and support for additional audio formats.</p>
+            </>
+          ),
+        },
+      ],
+    },
+    {
       title: "Object and Text Detection",
       description: "Accessibility for visually impaired users with 90% text recognition and 85% object detection accuracy, featuring text-to-speech.",
       tech: ["Python", "OpenCV", "PyTesseract", "YOLO"],
